@@ -104,10 +104,16 @@ export interface RecentReward {
   name: string;
 }
 
+export interface DailyLaunchEntry {
+  day: string;
+  count: number;
+}
+
 export interface CoinsData {
   coins: Coin[];
   total: number;
   at: number;
+  daily?: DailyLaunchEntry[];
 }
 
 export interface Coin {

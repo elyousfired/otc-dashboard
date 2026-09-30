@@ -6,6 +6,7 @@ import HeroCards from '@/components/HeroCards';
 import TokenBar from '@/components/TokenBar';
 import BuybackChart from '@/components/BuybackChart';
 import RevenueChart from '@/components/RevenueChart';
+import DailyLaunchesChart from '@/components/DailyLaunchesChart';
 import LiveFeed from '@/components/LiveFeed';
 import SupplyDestroyed from '@/components/SupplyDestroyed';
 import TopCoins from '@/components/TopCoins';
@@ -73,6 +74,13 @@ function Dashboard() {
         ? <RevenueChart daily={revenue.daily} otcPrice={revenue.otc.usdPrice} />
         : <Skeleton h={330} />
       }
+
+      {/* Daily Tokens Launched Histogram */}
+      {coins?.daily ? (
+        <DailyLaunchesChart daily={coins.daily} total={coins.total} />
+      ) : (
+        <Skeleton h={330} />
+      )}
 
       {/* Supply Destroyed */}
       {revenue ? <SupplyDestroyed data={revenue} /> : <Skeleton h={130} />}
