@@ -1,0 +1,115 @@
+@import 'tailwindcss';
+
+:root {
+  --bg: #06060b;
+  --bg-card: #0d0d14;
+  --bg-card-hover: #13131d;
+  --border: #1a1a2e;
+  --text: #e4e4ed;
+  --text-muted: #6b6b80;
+  --text-dim: #44445a;
+  --accent: #3b82f6;
+  --accent-orange: #f59e0b;
+  --green: #22c55e;
+  --red: #ef4444;
+  --chart-blue: #3b82f6;
+  --chart-orange: #f59e0b;
+  --avg-line: rgba(59,130,246,0.4);
+}
+
+* { box-sizing: border-box; }
+html { color-scheme: dark; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse 2s infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.feed-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  transition: background 0.1s;
+}
+.feed-item:hover { background: var(--bg-card-hover); }
+.feed-item:last-child { border-bottom: none; }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+  width: 44px;
+  justify-content: center;
+}
+.badge-buy  { background: rgba(59,130,246,0.15); color: #3b82f6; }
+.badge-burn { background: rgba(245,158,11,0.15); color: #f59e0b; }
+
+.skeleton {
+  background: linear-gradient(90deg, var(--border) 25%, var(--bg-card-hover) 50%, var(--border) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.tnum { font-variant-numeric: tabular-nums; }
