@@ -71,7 +71,13 @@ function Dashboard() {
 
       {/* Revenue breakdown chart */}
       {revenue
-        ? <RevenueChart daily={revenue.daily} otcPrice={revenue.otc.usdPrice} />
+        ? (
+          <RevenueChart
+            daily={revenue.daily}
+            otcPrice={revenue.otc.usdPrice}
+            totalBuybackSpent={revenue.buyback.spent}
+          />
+        )
         : <Skeleton h={330} />
       }
 

@@ -25,7 +25,7 @@ export default function TokenBar({ data }: { data: RevenueData }) {
         <Stat label="Vol 24h" value={formatUsd(volume.d1, true)} />
         <Stat label="Buybacks" value={buyback.buys.toLocaleString()} color="blue" />
         <Stat label="Burns" value={buyback.burns.toLocaleString()} color="orange" />
-        <Stat label="SOL in wallet" value={`${(buyback.balance / 1e6).toFixed(2)} SOL`} />
+        <Stat label="SOL in wallet" value={`${(buyback.balance / 1e9).toFixed(2)} SOL`} />
       </div>
     </div>
   );

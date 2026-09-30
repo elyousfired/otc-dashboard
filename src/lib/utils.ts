@@ -1,13 +1,11 @@
-// Convert lamports to SOL (6 decimals)
+// Convert lamports to SOL (9 decimals: 1 SOL = 1,000,000,000 lamports)
 export function lamportsToSol(lamports: number): number {
-  return lamports / 1_000_000;
+  return lamports / 1_000_000_000;
 }
 
 // Format SOL with proper decimals
 export function formatSol(lamports: number, decimals = 2): string {
   const sol = lamportsToSol(lamports);
-  if (sol >= 1_000_000) return `${(sol / 1_000_000).toFixed(2)}M`;
-  if (sol >= 1_000) return `${(sol / 1_000).toFixed(1)}K`;
   return sol.toLocaleString('en-US', {
     minimumFractionDigits: decimals,
     maximumFractionDigits: decimals,
