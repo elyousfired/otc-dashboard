@@ -9,6 +9,7 @@ import RevenueChart from '@/components/RevenueChart';
 import LiveFeed from '@/components/LiveFeed';
 import SupplyDestroyed from '@/components/SupplyDestroyed';
 import TopCoins from '@/components/TopCoins';
+import RecentLaunches from '@/components/RecentLaunches';
 import StatsBar from '@/components/StatsBar';
 import DexChart from '@/components/DexChart';
 
@@ -37,9 +38,15 @@ function Dashboard() {
     <div className="space-y-4">
       {/* Hero Cards */}
       {revenue
-        ? <HeroCards data={revenue} />
-        : <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {[1,2,3,4].map(i => <Skeleton key={i} h={110} />)}
+        ? (
+          <HeroCards
+            data={revenue}
+            totalCoins={coins?.total}
+            payingCoins={rewards?.paying}
+          />
+        )
+        : <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            {[1,2,3,4,5].map(i => <Skeleton key={i} h={110} />)}
           </div>
       }
 
@@ -80,8 +87,14 @@ function Dashboard() {
             : <Skeleton h={400} />
         }
 
-        {/* Rewards overview + Stats */}
+        {/* Recently Launched + Rewards overview + Stats */}
         <div className="space-y-4">
+          {coins ? (
+            <RecentLaunches coins={coins.coins} total={coins.total} />
+          ) : (
+            <Skeleton h={320} />
+          )}
+
           {rewards && (
             <div className="card">
               <h2 className="mb-4 text-[13px] font-semibold">📊 Rewards overview</h2>

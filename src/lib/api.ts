@@ -158,7 +158,7 @@ export function useRewards() {
 
 export function useCoins() {
   return useSWR<CoinsData>('/api/coins', fetcher, {
-    refreshInterval: 300_000,
+    refreshInterval: 60_000,
     revalidateOnFocus: true,
   });
 }
